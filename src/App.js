@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import AuthRoute from './components/AuthRoute';
+
+import Tasklists from './components/Tasklists';
+import Tasklist from './components/Tasklist'
+import Navbar from './components/Navbar';
+import LoginForm from './components/LoginForm';
+import Profile from './components/Profile';
+import NotFound from './components/NotFound';
+import PasswordReset from './components/PasswordReset';
+
+import 'bootswatch/dist/superhero/bootstrap.min.css'
+import './App.css'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            <Navbar/>
+            <div className="container py-3">
+                <Switch>
+                    <AuthRoute exact path="/" component={Tasklists}></AuthRoute>
+                    <AuthRoute path="/list/:tasklistId" component={Tasklist}></AuthRoute>
+                    <Route exact path="/login" component={LoginForm}></Route>
+                    <Route exact path="/password_reset" component={PasswordReset}></Route>
+                    <AuthRoute exact path="/profile" component={Profile}></AuthRoute>
+                    <Route component={NotFound}></Route>
+                </Switch>
+            </div>
+        </Router>
+    );
 }
 
 export default App;

@@ -1,0 +1,9 @@
+.card.todo{
+    border: 3px solid var(--bs-success);
+}
+.card.important{
+    border: 3px solid var(--bs-warning);
+}
+.card.urgent{
+    border: 3px solid var(--bs-danger);
+}

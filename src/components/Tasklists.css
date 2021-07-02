@@ -1,0 +1,6 @@
+.card-body.tasklist{
+    cursor: pointer;
+}
+.card-body.tasklist:hover{
+    background-color: var(--bs-dark);
+}
